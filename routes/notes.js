@@ -1,11 +1,11 @@
 const nts = require('express').Router();
-const readAndAppend = require('../helpers/fsUtils.js')
+const { v4: uuidv4 } = require('uuid');
+const { readAndAppend, readFromFile } = require('../helpers/fsUtils.js')
 
-const noteData = require('../db/db.json')
-
+// Curious as to how this works. (It's needed to make sure the data doesn't try to render before the request for db.json has been received.)
 nts.get('/', (req, res) =>
-    // This might need to be promisified in the helper script. Will test.
-    res.json(noteData)
+    readFromFile('./db/db.json').then((data) =>
+    res.json(JSON.parse(data)))
 );
 
 nts.post('/', (req, res) => {
@@ -14,8 +14,9 @@ nts.post('/', (req, res) => {
         const newNote = {
             title,
             text,
+            id: uuidv4(),
             };
-// Curious about why this path is relative to the server, when the noteData const is defined relative to this file.
+
             readAndAppend(newNote, './db/db.json')
 
             const response = {
@@ -30,3 +31,7 @@ nts.post('/', (req, res) => {
 )
 
 module.exports = nts;
+
+
+// TODO:
+// * Add DELETE functionality.

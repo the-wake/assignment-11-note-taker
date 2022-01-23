@@ -1,12 +1,12 @@
 const fs = require('fs');
 const util = require('util');
 
-// Not sure if we need this as a promise-based function.
-// const readFromFile = util.promisify(fs.readFile);
+// I think we need this so that the page doesn't try to re-render before the new data's been sent and received.
+const readFromFile = util.promisify(fs.readFile);
 
-const writeToFile = (destination, content) => 
-    fs.writeFile(destination, JSON.stringify(content, null, 4), (err) => 
-        err ? console.error(err) : console.info(`New data written to file ${destination}`)
+const writeToFile = (destination, content) =>
+    fs.writeFile(destination, JSON.stringify(content, null, 4), (err) =>
+        err ? console.error(err) : console.info(`\nData written to ${destination}`)
 );
 
 const readAndAppend = (content, file) => {
@@ -21,4 +21,4 @@ const readAndAppend = (content, file) => {
     })
 }
 
-module.exports = readAndAppend;
+module.exports = { readFromFile, readAndAppend }
