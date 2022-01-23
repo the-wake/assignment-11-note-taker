@@ -21,4 +21,21 @@ const readAndAppend = (content, file) => {
     })
 }
 
-module.exports = { readFromFile, readAndAppend }
+const readAndRemove = (delId, file) => {
+    fs.readFile(file, 'utf8', (err, data) => {
+        if (err) {
+            console.error(err)
+        } else {
+            const parsedData = JSON.parse(data)
+            console.log(parsedData);
+            const returnArray = parsedData.filter(function(obj) {
+                return obj.id !== delId;
+            })
+            console.log(returnArray);
+            writeToFile(file, returnArray);
+        }
+    })
+}
+
+
+module.exports = { readFromFile, readAndAppend, readAndRemove }

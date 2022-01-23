@@ -1,6 +1,6 @@
 const nts = require('express').Router();
 const { v4: uuidv4 } = require('uuid');
-const { readAndAppend, readFromFile } = require('../helpers/fsUtils.js')
+const { readAndAppend, readFromFile, readAndRemove } = require('../helpers/fsUtils.js')
 
 // Curious as to how this works. (It's needed to make sure the data doesn't try to render before the request for db.json has been received.)
 nts.get('/', (req, res) =>
@@ -30,8 +30,20 @@ nts.post('/', (req, res) => {
     }
 )
 
+nts.delete('/:id', (req, res) => {
+    const removeId = req.params.id;
+    console.log(`Delete request recieved: ${removeId}`);
+    readAndRemove(removeId, './db/db.json');
+    }
+)
+
+// Save ID passed from the DELETE request body.
+// Parse db.json and return the array.
+// Use filter() to create a new array without the specified note
+
+// myArray = myArray.filter(function( obj ) {
+//     return obj.field !== 'money';
+
+// });
+
 module.exports = nts;
-
-
-// TODO:
-// * Add DELETE functionality.
