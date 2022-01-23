@@ -10,18 +10,21 @@ nts.get('/', (req, res) =>
 
 nts.post('/', (req, res) => {
     const { title, text } = req.body
-    if (data) {
+    if (title && text) {
         const newNote = {
             title,
             text,
-            }
-
-            readAndAppend(newNote, '../db/db.json')
+            };
+// Curious about why this path is relative to the server, when the noteData const is defined relative to this file.
+            readAndAppend(newNote, './db/db.json')
 
             const response = {
                 status: 'Success',
                 body: newNote,
-            }
+            };
+            res.json(response)
+        } else {
+            res.json('Please enter a title and body text for your note.')
         }
     }
 )
