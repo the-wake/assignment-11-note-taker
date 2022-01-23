@@ -29,6 +29,7 @@ nts.post('/', (req, res) => {
         }
 })
 
+// I guess this needed a response in order to get the page to render after the delete request comes through due to the await notes.json()?
 nts.delete('/:id', (req, res) => {
     const removeId = req.params.id;
     if (removeId) {
