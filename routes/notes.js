@@ -27,23 +27,21 @@ nts.post('/', (req, res) => {
         } else {
             res.json('Please enter a title and body text for your note.')
         }
-    }
-)
+})
 
 nts.delete('/:id', (req, res) => {
     const removeId = req.params.id;
-    console.log(`Delete request recieved: ${removeId}`);
-    readAndRemove(removeId, './db/db.json');
+    if (removeId) {
+        readAndRemove(removeId, './db/db.json');
+
+        const response = {
+            status: 'Success',
+            body: `Removing note ID# ${removeId}`
+        };
+        res.json(response)
+    } else {
+        res.json('An error occured.')
     }
-)
-
-// Save ID passed from the DELETE request body.
-// Parse db.json and return the array.
-// Use filter() to create a new array without the specified note
-
-// myArray = myArray.filter(function( obj ) {
-//     return obj.field !== 'money';
-
-// });
+})
 
 module.exports = nts;

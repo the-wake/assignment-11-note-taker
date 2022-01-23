@@ -37,5 +37,7 @@ const readAndRemove = (delId, file) => {
     })
 }
 
+// Get the page to re-render after removing an item.
+
 
 module.exports = { readFromFile, readAndAppend, readAndRemove }
