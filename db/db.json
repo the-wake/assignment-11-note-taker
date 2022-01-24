@@ -1,7 +1,17 @@
 [
     {
-        "title": "Tetwat",
-        "text": "tewetsd",
-        "id": "c0f678ff-b63d-4abf-8507-86a12c699251"
+        "title": "Party with Andy",
+        "text": "I love Andy's parties.",
+        "id": "26612c69-95b6-43f7-af6d-25e10aa0fefb"
+    },
+    {
+        "title": "Lunch meeting @ 12:15",
+        "text": "With people I don't like.",
+        "id": "80fc0594-4163-4e28-9717-08b683896440"
+    },
+    {
+        "title": "(555) 123-4567",
+        "text": "This is a phone number.",
+        "id": "e69528d9-da9b-4ee0-963c-9503dfeb8362"
     }
 ]
