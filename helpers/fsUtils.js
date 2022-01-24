@@ -1,7 +1,6 @@
 const fs = require('fs');
 const util = require('util');
 
-// I think we need this so that the page doesn't try to re-render before the new data's been sent and received.
 const readFromFile = util.promisify(fs.readFile);
 
 const writeToFile = (destination, content) =>
