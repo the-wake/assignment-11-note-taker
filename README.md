@@ -29,6 +29,6 @@ The user can click on the trash bin icon next to each saved note to remove it fr
 * Coded in VS Code
 
 ## Future Functionality
-* We could allow for multiple files with different names to be created, to create a catalog of teams.
-* We could create append functions to allow for more individuals to be added to a team later.
-* We could let the user input additional information, such as project name and desired file name.
+* We could make notes loaded from storage display as a modal instead of filling in the input forms.
+* We could allow more robust validation for whether a note is valid for submission.
+* We could add categories for notes, with unique images/styling.
